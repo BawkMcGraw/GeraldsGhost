@@ -1,0 +1,1 @@
+var save = { i:0, s:1 }; module.exports = save;
