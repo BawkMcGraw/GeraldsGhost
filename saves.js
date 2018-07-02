@@ -1,1 +1,1 @@
-var save = { i:0, s:0 }; module.exports = save;
+var save = { i:2, s:1 }; module.exports = save;
