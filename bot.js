@@ -162,12 +162,6 @@ class Functions {
         if (g1.test(groupid)) {
             sqlm = 'update counters set s = '+s+', i = '+i+', t = '+t+', time = '+timeout+', toc = '+toc+', day = '+day+', d2 = '+d2+', month = '+month+' where g = 1\;';
         }
-        if (g2.test(groupid)) {
-            sqlm = 'update counters set s = '+s+', i = '+i+', t = '+t+', time = '+timeout+', toc = '+toc+', day = '+day+', d2 = '+d2+', month = '+month+' where g = 2\;';
-        }
-        if (g3.test(groupid)) {
-            sqlm = 'update counters set s = '+s+', i = '+i+', t = '+t+', time = '+timeout+', toc = '+toc+', day = '+day+', d2 = '+d2+', month = '+month+' where g = 3\;';
-        }
         // Data Test
         // console.log(sqlm);
         // Send server save info
