@@ -36,7 +36,7 @@ class Server {
         Bot.Functions.load();
         function send() {
             console.log("starting send");
-            const resMessage = Bot.checkMessage(reqMessage);
+            const resMessage = Bot.Bot.checkMessage(reqMessage);
             if (resMessage) {
                 Bot.sendMessage(resMessage);
             }
