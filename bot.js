@@ -17,9 +17,7 @@ var fireworks, food, navy, freedom, revolution, america;
 var messageName, messageUId;
 var timeOutText = 0;
 const g0 = /27754904/;
-const g1 = /0/;
-const g2 = /0/;
-const g3 = /0/;
+const g1 = /41279538/;
 
 
 /** MASTER DEV PLAN
@@ -639,25 +637,17 @@ class Bot {
         Functions.saveJuly();
         tc = 0;
         point = '';
-        var botId = "9e5b4c453857bf5478df24d842";
-        /*
-        const botid0 = process.env.BOT_ID;
-        const botid1 = process.env.BOT_ID1;
-        const botid2 = process.env.BOT_ID2;
-        const botid3 = process.env.BOT_ID3;
+        var botId;
+
+        const botid0 = "9e5b4c453857bf5478df24d842";
+        const botid1 = "c49eba712a03a1966490d197fd";
+
         if (g0.test(groupid)) {
             botId = botid0;
         }
         if (g1.test(groupid)) {
             botId = botid1;
         }
-        if (g2.test(groupid)) {
-            botId = botid2;
-        }
-        if (g3.test(groupid)) {
-            botId = botid3;
-        }
-        */
 
         const options = {
             hostname: 'api.groupme.com',
