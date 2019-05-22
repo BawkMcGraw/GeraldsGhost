@@ -397,27 +397,6 @@ class Bot {
             d2 = d21;
             month = month1;
         }
-        if (g2.test(groupid)) {
-            s = s2;
-            i = i2;
-            t = t2;
-            timeout = timeout2;
-            toc = toc2;
-            day = day2;
-            d2 = d22;
-            month = month2;
-        }
-        if (g3.test(groupid)) {
-            s = s3;
-            i = i3;
-            t = t3;
-            timeout = timeout3;
-            toc = toc3;
-            day = day3;
-            d2 = d23;
-            month = month3;
-        }
-
 
         // Check if the GroupMe message has content and if the regex pattern is true
         if (messageText)
