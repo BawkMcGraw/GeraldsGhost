@@ -17,9 +17,7 @@ var fireworks, food, navy, freedom, revolution, america;
 var messageName, messageUId;
 var timeOutText = 0;
 const g0 = /27754904/;
-const g1 = /0/;
-const g2 = /0/;
-const g3 = /0/;
+const g1 = /41279538/;
 
 
 /** MASTER DEV PLAN
@@ -163,12 +161,6 @@ class Functions {
         var sqlm = 'update counters set s = '+s+', i = '+i+', t = '+t+', time = '+timeout+', toc = '+toc+', day = '+day+', d2 = '+d2+', month = '+month+' where g = 0\;';
         if (g1.test(groupid)) {
             sqlm = 'update counters set s = '+s+', i = '+i+', t = '+t+', time = '+timeout+', toc = '+toc+', day = '+day+', d2 = '+d2+', month = '+month+' where g = 1\;';
-        }
-        if (g2.test(groupid)) {
-            sqlm = 'update counters set s = '+s+', i = '+i+', t = '+t+', time = '+timeout+', toc = '+toc+', day = '+day+', d2 = '+d2+', month = '+month+' where g = 2\;';
-        }
-        if (g3.test(groupid)) {
-            sqlm = 'update counters set s = '+s+', i = '+i+', t = '+t+', time = '+timeout+', toc = '+toc+', day = '+day+', d2 = '+d2+', month = '+month+' where g = 3\;';
         }
         // Data Test
         // console.log(sqlm);
@@ -399,27 +391,6 @@ class Bot {
             d2 = d21;
             month = month1;
         }
-        if (g2.test(groupid)) {
-            s = s2;
-            i = i2;
-            t = t2;
-            timeout = timeout2;
-            toc = toc2;
-            day = day2;
-            d2 = d22;
-            month = month2;
-        }
-        if (g3.test(groupid)) {
-            s = s3;
-            i = i3;
-            t = t3;
-            timeout = timeout3;
-            toc = toc3;
-            day = day3;
-            d2 = d23;
-            month = month3;
-        }
-
 
         // Check if the GroupMe message has content and if the regex pattern is true
         if (messageText)
@@ -639,25 +610,17 @@ class Bot {
         Functions.saveJuly();
         tc = 0;
         point = '';
-        var botId = "9e5b4c453857bf5478df24d842";
-        /*
-        const botid0 = process.env.BOT_ID;
-        const botid1 = process.env.BOT_ID1;
-        const botid2 = process.env.BOT_ID2;
-        const botid3 = process.env.BOT_ID3;
+        var botId;
+
+        const botid0 = "9e5b4c453857bf5478df24d842";
+        const botid1 = "c49eba712a03a1966490d197fd";
+
         if (g0.test(groupid)) {
             botId = botid0;
         }
         if (g1.test(groupid)) {
             botId = botid1;
         }
-        if (g2.test(groupid)) {
-            botId = botid2;
-        }
-        if (g3.test(groupid)) {
-            botId = botid3;
-        }
-        */
         const options = {
             hostname: 'api.groupme.com',
             path: '/v3/bots/post',
@@ -677,27 +640,27 @@ class Bot {
             var tick = function (loop) {
                 return function () {
 
-            const body = {
-                bot_id: botId,
-                text: mtch[loop]
-            };
+                    const body = {
+                        bot_id: botId,
+                        text: mtch[loop]
+                    };
 
-            const botReq = https.request(options, function(res) {
-                if (res.statusCode !== 202) {
-                    console.log('Bad status ' + res.statusCode);
-                }
-            });
+                    const botReq = https.request(options, function(res) {
+                        if (res.statusCode !== 202) {
+                            console.log('Bad status' + res.statusCode);
+                        }
+                    });
 
-            botReq.on('error', function(err) {
-                console.log('Error ' + JSON.stringify(err));
-            });
+                    botReq.on('error', function(err) {
+                        console.log('Error ' + JSON.stringify(err));
+                    });
 
+                    // On timeout
+                    botReq.on('timeout', function(err) {
+                        console.log('Timeout ' + JSON.stringify(err));
+                    });
 
-            botReq.on('timeout', function(err) {
-                console.log('Timeout ' + JSON.stringify(err));
-            });
-
-            botReq.end(JSON.stringify(body));
+                    botReq.end(JSON.stringify(body));
                 }
             }
             setTimeout(tick(loop), 500 * loop);
