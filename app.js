@@ -38,7 +38,7 @@ class Server {
             console.log("starting send");
             const resMessage = Bot.Bot.checkMessage(reqMessage);
             if (resMessage) {
-                Bot.sendMessage(resMessage);
+                Bot.Bot.sendMessage(resMessage);
             }
         }
         console.log('reached timeout');
