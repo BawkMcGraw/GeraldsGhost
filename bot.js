@@ -640,18 +640,11 @@ class Bot {
         tc = 0;
         point = '';
         var botId = "9e5b4c453857bf5478df24d842";
-        
+        /*
         const botid0 = process.env.BOT_ID;
         const botid1 = process.env.BOT_ID1;
         const botid2 = process.env.BOT_ID2;
         const botid3 = process.env.BOT_ID3;
-
-        const options = {
-            hostname: 'api.groupme.com',
-            path: '/v3/bots/post',
-            method: 'POST'
-        };
-        /*
         if (g0.test(groupid)) {
             botId = botid0;
         }
@@ -665,6 +658,13 @@ class Bot {
             botId = botid3;
         }
         */
+
+        const options = {
+            hostname: 'api.groupme.com',
+            path: '/v3/bots/post',
+            method: 'POST'
+        };
+
        var lngth, max, loop;
        var mtch = messageText.match(/.{1,1000}/g);
         for (lngth = 0; lngth<5; lngth++) {
@@ -679,34 +679,31 @@ class Bot {
             var tick = function (loop) {
                 return function () {
 
-            const body = {
-                bot_id: botId,
-                text: mtch[loop]
-            };
+                    const body = {
+                        bot_id: botId,
+                        text: mtch[loop]
+                    };
 
-            // Make the POST request to GroupMe with the http module
-            const botRequest = https.request(options, function(response) {
-                if (response.statusCode !== 202) {
-                    console.log('Rejecting bad status code ' + response.statusCode);
+                    const botReq = https.request(options, function(res) {
+                        if (res.statusCode !== 202) {
+                            console.log('Bad status' + res.statusCode);
+                        }
+                    });
+
+                    botReq.on('error', function(err) {
+                        console.log('Error ' + JSON.stringify(err));
+                    });
+
+                    // On timeout
+                    botReq.on('timeout', function(err) {
+                        console.log('Timeout ' + JSON.stringify(err));
+                    });
+
+                    botReq.end(JSON.stringify(body));
                 }
-            });
-
-            // On error
-            botRequest.on('error', function(error) {
-                console.log('Error posting message ' + JSON.stringify(error));
-            });
-
-            // On timeout
-            botRequest.on('timeout', function(error) {
-                console.log('Timeout posting message ' + JSON.stringify(error));
-            });
-
-            // Finally, send the body to GroupMe as a string
-            botRequest.end(JSON.stringify(body));
-    }
-    }
-    setTimeout(tick(loop), 500 * loop);
-    }
+            }
+            setTimeout(tick(loop), 500 * loop);
+        }
     }
 };
 module.exports = {Bot:Bot, Functions:Functions}
