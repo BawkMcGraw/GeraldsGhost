@@ -613,7 +613,7 @@ class Bot {
         var botId;
 
         const botid0 = "9e5b4c453857bf5478df24d842";
-        const botid1 = "c49eba712a03a1966490d197fd";
+        const botid1 = "85b8f1df02628b05226c8f7b3e";
 
         if (g0.test(groupid)) {
             botId = botid0;
