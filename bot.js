@@ -1,6 +1,6 @@
 const https = require('https');
 const { Pool, Client } = require('pg');
-var gTest = [/27754904/,/51082095/,/41279538/];
+var gTest = [/27754904/,/41279538/];
 var g;
 var t,timeout,s;
 
@@ -26,8 +26,11 @@ const laurenex = /29962743/;
 const kristenex = /48138508/;
 
 
-/** MASTER DEV PLAN
- * fucking rewrite this colossal heap of shit   --IN PROGRESS-- --90%--
+/** TO-DO
+ * fucking rewrite this colossal heap of shit   --COMPLETED--
+ * add easter egg hunts
+ * add more stories
+ * make adding stories easier
  */
 
 class Functions {
@@ -38,22 +41,34 @@ class Functions {
         {
             array.push(Math.floor(Math.random()*Math.floor(4)));
         }
-        a = ["I remember this one time we sailed right up to a shore none of us had ever seen before. Large Hat Matt, they called him that on the account of his large hat; he stepped out there and suddenly ",
+        a = [
+            "I remember this one time we sailed right up to a shore none of us had ever seen before. Large Hat Matt, they called him that on the account of his large hat; he stepped out there and suddenly ",
             "We had just made port when a gentlemen walked up to me with a glimmer of evil in his eye; I knew who he was though I knew not his name, but I still let him talk to me, lord knows why. After some drinks he led me to the other side of the island when out of nowhere ",
             "I remember one time we were all drinking on the ship, the whole crew was plastered; had someone fired on us, their canons would have never pierced through our singing... and this thing... and then... um... anyways ",
-            "I just left the SeaMart with a large bucket of kale for Tony, he's vegetarian, when I felt something against my back. Just as the door dinged and shut, I heard someone speaking. 'What?' I said, 'I didn't hear you over the bell.' He said 'One more word and I'll cut your--' and spontaneously "];
+            "I just left the SeaMart with a large bucket of kale for Tony, he's vegetarian, when I felt something against my back. Just as the door dinged and shut, I heard someone speaking. 'What?' I said, 'I didn't hear you over the bell.' He said 'One more word and I'll cut your--' and spontaneously "
+        ];
         
-        b = ["a great big whale just flew right out of the water! I stood in awe and terror at the beast's magnitude blocking out the sun. It was coming right for us! but just before it hit us a loud roar erupted ",
+        b = [
+            "a great big whale just flew right out of the water! I stood in awe and terror at the beast's magnitude blocking out the sun. It was coming right for us! but just before it hit us a loud roar erupted ",
             "a flying ship swooped down from the sky! I couldn't believe it! Skeletons started tumbling out and falling everywhere, dancing as they fell! There was a marimba playing too! It looked like they were all starting to get up ",
             "there was a Costco right over the hill! I don't know why, but our ship can hold over 700 pounds of peg legs! We had just loaded it into our ship ",
-            "a giant red crab climbed right next to us! I didn't say anything and kept perfectly still. It turned to us, and everyone but me ran. I must have been thinking of those dinosaurs we saw a couple years before because the crab cut me right in half. I started to scream bloody murder "];
+            "a giant red crab climbed right next to us! I didn't say anything and kept perfectly still. It turned to us, and everyone but me ran. I must have been thinking of those dinosaurs we saw a couple years before because the crab cut me right in half. I started to scream bloody murder "
+        ];
         
-        c = ["and the whole thing blew up! KABOOM! we were never heard from again... until later that week when we saw Ms. Darla. Oh gosh, I can smell those delicious pies even now.",
+        c = [
+            "and the whole thing blew up! KABOOM! we were never heard from again... until later that week when we saw Ms. Darla. Oh gosh, I can smell those delicious pies even now.",
             "and then... I think something... about a marshmellow. No wait! It was a pineapple! No, that's not it either. Hm...",
             "and you would not believe the look on the crews face when we realized it was actually just a ponzie scheme! I swear we lost every last bit of gold. Haha. I was mutinied shortly after.",
-            "and then with a bright flash of light, it was all gone. There I was... standing before a strange yet, powerful being. I could tell it was powerful because it was drinking mountain dew. After that things got a little fuzzy and juggy. Something about my outfit I think..."];
+            "and then with a bright flash of light, it was all gone. There I was... standing before a strange yet, powerful being. I could tell it was powerful because it was drinking mountain dew. After that things got a little fuzzy and juggy. Something about my outfit I think..."
+        ];
         s++;
         return 'stooOOOoory? ' + a[array[0]] + b[array[1]] + c[array[2]];
+    }
+    static thank() {
+        var array = ['Tell it to the hat.','Always happy to give to those, what I cannot posses.','Thank me with the fountain of youth','know any demonic rituals that involve summoning the dead?','I\'ve got nothing better to do, being dead an all','YoooOOoou\'re welcome!'];
+        var rng = Math.floor(Math.random()*Math.floor(array.length));
+
+        return array[rng];
     }
     static load(groupid) {
         console.log('starting load');
@@ -62,7 +77,6 @@ class Functions {
                 g = i;
             }
         }
-        console.log('g at load '+g);
         const con = new Client({
             connectionString: process.env.DATABASE_URL,
             ssl: true,
@@ -84,7 +98,6 @@ class Functions {
                 timeout = result.rows[g].timeout;
                 s = result.rows[g].s;
             }
-            console.log(t+' '+timeout+' '+s);
 
             // PLAYER SCORE LOGS
             /**
@@ -99,7 +112,6 @@ class Functions {
     }
     static save() {
         // Connect
-        console.log('g at save '+g);
         const con = new Client({
             connectionString: process.env.DATABASE_URL,
             ssl: true,
@@ -130,7 +142,6 @@ class Functions {
     }
 
     static timeout() {
-        console.log('made it to timeout');
         var time = new Date();
         var minute = time.getMinutes();
         var hour = time.getHours()*100;
@@ -188,7 +199,6 @@ class Bot {
         var mText = message.text;
         var mName = message.name;
         var UID = message.user_id;
-        console.log('g at checkmessage '+g);
 
         if (nameex.test(mName)) {
             return null;
@@ -202,6 +212,9 @@ class Bot {
                     }
                     if (manyex.test(mText)) {
                         return s+' stoooOOoories';
+                    }
+                    if (thankex.test(mText)) {
+                        return Functions.thank();
                     }
                     else {
                         return Functions.Story();
@@ -227,31 +240,21 @@ class Bot {
         // Get the GroupMe bot id saved in `.env`
         Functions.save();
         var botId;
-        console.log('botid pre '+botId);
-        console.log('g at botid '+g);
 
         const botid0 = "9e5b4c453857bf5478df24d842";
-        const botid1 = "d0ba5c3b44c41ebda08008c411";
-        const botid2 = "85b8f1df02628b05226c8f7b3e";
+        const botid1 = "85b8f1df02628b05226c8f7b3e";
 
         if (g == 0) {
             botId = botid0;
-            console.log('set botId 0');
         }
         if (g == 1) {
-            console.log('set botId 1');
             botId = botid1;
-        }
-        if (g == 2) {
-            console.log('set botId 2');
-            botId = botid2;
         }
         const options = {
             hostname: 'api.groupme.com',
             path: '/v3/bots/post',
             method: 'POST'
         };
-        console.log('botid post'+botId);
        var loop;
        var mtch = messageText.match(/.{1,1000}/g);
         for (loop = 0; loop < mtch.length; loop++) {
