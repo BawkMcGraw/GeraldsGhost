@@ -58,6 +58,7 @@ class Functions {
     static load(groupid) {
         console.log('starting load');
         for (var i = 0; i < gTest.length; i++) {
+            console.log('i '+i);
             if (gTest[i].test(groupid)) {
                 console.log(gTest[i]+' was true.');
                 g = i;
