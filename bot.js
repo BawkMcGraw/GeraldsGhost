@@ -59,9 +59,11 @@ class Functions {
         console.log('starting load');
         for (var i = 0; i < gTest.length; i++) {
             if (gTest[i].test(groupid)) {
+                console.log(gTest[i]+' was true.');
                 g = i;
             }
         }
+        console.log('g '+g);
         const con = new Client({
             connectionString: process.env.DATABASE_URL,
             ssl: true,
