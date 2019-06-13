@@ -132,7 +132,7 @@ class Functions {
         var year = (time.getFullYear()-2000)*100000000;
         var ttime = minute + hour + day + month + year;
         console.log('ttime '+ttime);
-        if (timeout >= ttime) {
+        if (timeout > ttime) {
             timeout = 0;
             t = 0;
             return 0;
