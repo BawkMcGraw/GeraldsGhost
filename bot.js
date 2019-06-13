@@ -217,14 +217,17 @@ class Bot {
         // Get the GroupMe bot id saved in `.env`
         Functions.save();
         var botId;
+        console.log('botid pre '+botId);
 
         const botid0 = "9e5b4c453857bf5478df24d842";
         const botid1 = "85b8f1df02628b05226c8f7b3e";
 
         if (g = 0) {
             botId = botid0;
+            console.log('set botId 0');
         }
         if (g = 1) {
+            console.log('set botId 1');
             botId = botid1;
         }
         const options = {
@@ -232,6 +235,7 @@ class Bot {
             path: '/v3/bots/post',
             method: 'POST'
         };
+        console.log('botid post'+botId);
        var loop;
        var mtch = messageText.match(/.{1,1000}/g);
         for (loop = 0; loop < mtch.length; loop++) {
