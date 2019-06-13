@@ -234,15 +234,15 @@ class Bot {
         const botid1 = "d0ba5c3b44c41ebda08008c411";
         const botid2 = "85b8f1df02628b05226c8f7b3e";
 
-        if (g = 0) {
+        if (g == 0) {
             botId = botid0;
             console.log('set botId 0');
         }
-        if (g = 1) {
+        if (g == 1) {
             console.log('set botId 1');
             botId = botid1;
         }
-        if (g = 2) {
+        if (g == 2) {
             console.log('set botId 2');
             botId = botid2;
         }
