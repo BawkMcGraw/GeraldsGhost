@@ -74,13 +74,15 @@ class Functions {
 
             // SQL RETURN
             if (result.rows[g] = undefined) {
-                result.rows[g].t = 0;
-                result.rows[g].timeout = 0;
-                result.rows[g].s = 0;
+                t = 0;
+                timeout = 0;
+                s = 0;
             }
-            t = result.rows[g].t;
-            timeout = result.rows[g].timeout;
-            s = result.rows[g].s;
+            if (result.rows[g]) {
+                t = result.rows[g].t;
+                timeout = result.rows[g].timeout;
+                s = result.rows[g].s;
+            }
 
             // PLAYER SCORE LOGS
             /**
