@@ -96,6 +96,9 @@ class Functions {
         con.connect();
         // Gather save data
         console.log('g '+g);
+        console.log('s '+s);
+        console.log('t '+t);
+        console.log('timeout '+timeout);
         var sqlm = 'update counters set s = '+s+', t = '+t+', timeout = '+timeout+' where g = '+g+'\;';
 
         // Send server save info
@@ -236,7 +239,7 @@ class Bot {
         };
        var loop;
        var mtch = messageText.match(/.{1,1000}/g);
-        for (loop = -0; loop <= mtch.length; loop++) {
+        for (loop = 0; loop < mtch.length; loop++) {
             var tick = function (loop) {
                 return function() {
                     const body = {
