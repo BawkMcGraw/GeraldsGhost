@@ -132,7 +132,7 @@ class Functions {
         }
         if (t < 3) {
             t++;
-            timeout = ttime + 5;
+            timeout = ttime + 2;
             return 0;
         }
         if (t == 3) {
