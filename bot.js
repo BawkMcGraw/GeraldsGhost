@@ -135,24 +135,20 @@ class Functions {
         if (timeout > ttime) {
             timeout = 0;
             t = 0;
+        }
+        if (t < 3) {
+            console.log('set timeout');
+            t++;
+            timeout = ttime + 5;
             return 0;
         }
-        else {
-            if (t < 3) {
-                console.log('set timeout');
-                t++;
-                timeout = ttime + 5;
-                return 0;
-            }
-            if (t == 3) {
-                t++;
-                return 1;
-            }
-            if (t > 3) {
-                return null;
-            }
+        if (t == 3) {
+            t++;
+            return 1;
         }
-
+        if (t > 3) {
+            return null;
+        }
     }
 
     static easteregg(messageid) {
