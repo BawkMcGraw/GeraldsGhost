@@ -233,27 +233,29 @@ class Bot {
        var mtch = messageText.match(/.{1,1000}/g);
         for (loop = -0; loop <= mtch.length; loop++) {
             var tick = function (loop) {
-                const body = {
-                    bot_id: botId,
-                    text: mtch[loop]
-                };
+                return function() {
+                    const body = {
+                        bot_id: botId,
+                        text: mtch[loop]
+                    };
 
-                const botReq = https.request(options, function(res) {
-                    if (res.statusCode !== 202) {
-                        console.log('Bad status' + res.statusCode);
-                    }
-                });
+                    const botReq = https.request(options, function(res) {
+                        if (res.statusCode !== 202) {
+                            console.log('Bad status' + res.statusCode);
+                        }
+                    });
 
-                botReq.on('error', function(err) {
-                    console.log('Error ' + JSON.stringify(err));
-                });
+                    botReq.on('error', function(err) {
+                        console.log('Error ' + JSON.stringify(err));
+                    });
 
-                // On timeout
-                botReq.on('timeout', function(err) {
-                    console.log('Timeout ' + JSON.stringify(err));
-                });
+                    // On timeout
+                    botReq.on('timeout', function(err) {
+                        console.log('Timeout ' + JSON.stringify(err));
+                    });
 
-                botReq.end(JSON.stringify(body));
+                    botReq.end(JSON.stringify(body));
+                }
             }
             setTimeout(tick(loop), 500 * loop);
         }
