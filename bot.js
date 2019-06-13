@@ -2,7 +2,7 @@ const https = require('https');
 const { Pool, Client } = require('pg');
 var gTest = [/27754904/,/41279538/];
 var g;
-var t,timeout;
+var t,timeout,s;
 
 // REGEX
 // BASIC
