@@ -193,8 +193,8 @@ class Bot {
         }
         else {
             if (taleex.test(mText) || geraldex.test(mText) || ghostex.test(mText) || sacex.test(mText)) {
-                Functions.timeout();
-                if (Functions.timeout() == 0) {
+                var timeo = Functions.timeout();
+                if (timeo == 0) {
                     if (helpex.test(mText)) {
                         return 'YoooOOOou can just ask for stories. Some of the triggers are a secret. If you\'re talking about the easteregg hunt, I\'ll tell more when I know more!'
                     }
@@ -205,7 +205,7 @@ class Bot {
                         return Functions.Story();
                     }
                 }
-                if (Functions.timeout() == 1) {
+                if (timeo == 1) {
                     return 'You have asked for TooOOOoo many stories! I must rest!';
                 }
                 else {
