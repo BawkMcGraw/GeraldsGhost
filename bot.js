@@ -65,7 +65,7 @@ class Functions {
         return 'stooOOOoory? ' + a[array[0]] + b[array[1]] + c[array[2]];
     }
     static thank() {
-        var array = ['Tell it to the hat.','Always happy to give to those, what I cannot posses.','Thank me with the fountain of youth','know any demonic rituals that involve summoning the dead?','I\'ve got nothing better to do, being dead an all','YoooOOoou\'re welcome!'];
+        var array = ['Tell it to the hat.','Always happy to give to those, what I cannot posses.','Thank me with the fountain of youth.','if you\'re feeling super generous, do know any demonic rituals that involve summoning the dead?','I\'ve got nothing better to do, being dead an all','YoooOOoou\'re welcome!'];
         var rng = Math.floor(Math.random()*Math.floor(array.length));
 
         return array[rng];
