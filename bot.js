@@ -52,7 +52,7 @@ class Functions {
             "and then... I think something... about a marshmellow. No wait! It was a pineapple! No, that's not it either. Hm...",
             "and you would not believe the look on the crews face when we realized it was actually just a ponzie scheme! I swear we lost every last bit of gold. Haha. I was mutinied shortly after.",
             "and then with a bright flash of light, it was all gone. There I was... standing before a strange yet, powerful being. I could tell it was powerful because it was drinking mountain dew. After that things got a little fuzzy and juggy. Something about my outfit I think..."];
-        
+        s++;
         return 'stooOOOoory? ' + a[array[0]] + b[array[1]] + c[array[2]];
     }
     static load(groupid) {
@@ -123,6 +123,7 @@ class Functions {
     }
 
     static timeout() {
+        console.log('reached too many');
         var time = new Date();
         var minute = time.getMinutes();
         var hour = time.getHours()*100;
@@ -130,6 +131,7 @@ class Functions {
         var month = time.getMonth()*1000000;
         var year = (time.getFullYear()-2000)*100000000;
         var ttime = minute + hour + day + month + year;
+        console.log('ttime '+ttime);
         if (timeout >= ttime) {
             timeout = 0;
             t = 0;
@@ -137,6 +139,7 @@ class Functions {
         }
         else {
             if (t < 3) {
+                console.log('set timeout');
                 t++;
                 timeout = ttime + 5;
                 return 0;
