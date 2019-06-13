@@ -73,6 +73,11 @@ class Functions {
             if (err) throw err;
 
             // SQL RETURN
+            if (result.rows[g].t = undefined) {
+                result.rows[g].t = 0;
+                result.rows[g].timeout = 0;
+                result.rows[g].s = 0;
+            }
             t = result.rows[g].t;
             timeout = result.rows[g].timeout;
             s = result.rows[g].s;
