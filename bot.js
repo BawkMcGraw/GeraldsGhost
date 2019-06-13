@@ -1,5 +1,5 @@
 const https = require('https');
-const Client = require('pg');
+const { Pool, Client } = require('pg');
 var gTest = [/27754904/,/41279538/];
 var g;
 var t,timeout;
