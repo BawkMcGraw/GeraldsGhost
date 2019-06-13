@@ -1,7 +1,13 @@
 const https = require('https');
 const { Pool, Client } = require('pg');
-var gTest = [/27754904/,/41279538/];
+// GROUPIDS
+// Get groupids from dev.groupme.com
+// List your groupids in this array in regex form. The first entry will be group 0, so put the corresponding botid with botid0 and so forth...
+var gTest = [/asdfasdf/,/asdfasdf/];
 var g;
+
+// SQL VARS
+// These variables need to be added to an sql table with the exact same name - more details can be found in the static load() and static save()
 var t,timeout,s;
 
 // REGEX
@@ -20,14 +26,13 @@ const rulesex = /rules/i;
 const playex = /play/i;
 
 // PLAYERS
-const jacobex = /26997134/;
-const riverex = /33073287/;
-const laurenex = /29962743/;
-const kristenex = /48138508/;
+// User ID goes in regex form
+const p1;
+const p2;
 
 
 /** TO-DO
- * fucking rewrite this colossal heap of shit   --COMPLETED--
+ * f@#$ing rewrite this colossal heap of sh#$   --COMPLETED--
  * add easter egg hunts
  * add more stories
  * make adding stories easier
@@ -82,6 +87,7 @@ class Functions {
             ssl: true,
         });
         con.connect();
+        // SELECT * FROM [table name] ORDER BY g;   // only use order by if you     1. have included an ordering column in sql      2. have more than one group
         var sqlm = 'select * from counters order by g\;'
         con.query(sqlm, function(err, result) {
             if (err) throw err;
@@ -100,12 +106,6 @@ class Functions {
             }
 
             // PLAYER SCORE LOGS
-            /**
-            * Jacob = result.rows[0].Jacob;
-            * River = result.rows[0].River;
-            * Lauren = result.rows[0].Lauren;
-            * Kristen = result.rows[0].Kristen;
-            */
 
             con.end();
         });
@@ -118,6 +118,7 @@ class Functions {
         });
         con.connect();
         // Gather save data
+        // UPDATE [table name] SET s = s, t = t, timeout = timeout where g = g;  --  only use where if using aformentioned organizing systemm
         var sqlm = 'update counters set s = '+s+', t = '+t+', timeout = '+timeout+' where g = '+g+'\;';
 
         // Send server save info
@@ -133,14 +134,13 @@ class Functions {
             ssl: true,
         });
         con.connect();
-        var sqlm = 'update counters set River = '+River+', Jacob = '+Jacob+', Lauren = '+Lauren+', Kristen = '+Kristen+' where g = 0\;';
+        var sqlm = 'update counters set p1 = '+p1+', p2 = '+p2+', p3 = '+p3+', p4 = '+p4+' where g = 0\;';
         con.query(sqlm, function(err) {
             if (err) throw err;
             console.log('saved scores');
             con.end();
         })
     }
-
     static timeout() {
         var time = new Date();
         var minute = time.getMinutes();
@@ -155,6 +155,7 @@ class Functions {
         }
         if (t < 3) {
             t++;
+            // Set timeout as integer in minutes (Ex. "ttime + 2" is timeout of 2 minutes)
             timeout = ttime + 2;
             return 0;
         }
@@ -166,23 +167,22 @@ class Functions {
             return null;
         }
     }
-
     static easteregg(messageid) {
-        if (riverex.test(messageid)) {
-            River++;
-            point = 'River got a point! '
+        if (p1ex.test(messageid)) {
+            p1++;
+            point = 'p1 got a point! '
         }
-        if (laurenex.test(messageid)) {
-            Lauren++;
-            point = 'Lauren got a point! '
+        if (p2ex.test(messageid)) {
+            p2++;
+            point = 'p2 got a point! '
         }
-        if (kristenex.test(messageid)) {
-            Kristen++;
-            point = 'Kristen got a point! '
+        if (p3ex.test(messageid)) {
+            p3++;
+            point = 'p3 got a point! '
         }
-        if (jacobex.test(messageid)) {
-            Jacob++;
-            point = 'Jacob got a point! '
+        if (p4ex.test(messageid)) {
+            p4++;
+            point = 'p4 got a point! '
         }
     }
 }
@@ -237,12 +237,12 @@ class Bot {
      * @return {undefined}
      */
     static sendMessage(messageText) {
-        // Get the GroupMe bot id saved in `.env`
+        // Get the GroupMe bot id from dev.groupme.com`
         Functions.save();
         var botId;
 
-        const botid0 = "9e5b4c453857bf5478df24d842";
-        const botid1 = "85b8f1df02628b05226c8f7b3e";
+        const botid0 = "";
+        const botid1 = "";
 
         if (g == 0) {
             botId = botid0;
