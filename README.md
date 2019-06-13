@@ -1,23 +1,29 @@
-# GroupMe Story Bot Gerald
-it randomly combines story sections to generate unique stories when called in the groupme server. It includes a plethora of other features:
+# GroupMe Story Bot Gerald V2
+Just finished a complete rewrite.
+
+It randomly combines story sections to generate unique stories when called in the groupme server. It can also host word based easteregg hunts, and prevent spam!
+
+## Features
 * cooldown timer for too many requests, to prevent chat spam
 * text based easter egg hunt with score scoring in postgreSQL
 * multiple group support
 * keeps stats for how many stories were requested and can post to the group
 * parses large story strings into multiple messages to avoid groupme character limitations.
 
+## Requirements
+* knowledge of postgreSQL
+* setup bigint for s, t, timeout
+* setup int for players if you want to use easteregg functions
+* knowledge on how to get player ids
+
+## To-do
+* simplify adding story sections
+* simplify adding easter egg hunts
+* add more story sections
+* re-add easteregg hunt (currently missing due to overhaul)
+* add more fun interactions and triggers
 
 ## License
-
-This bot's server code is based on the following material.
-
-[![GNU GPLv3 License](https://img.shields.io/github/license/acmatuc/groupme-bot-starter.svg?maxAge=2592000)]()
-[![Dependencies Status](https://david-dm.org/acmatuc/groupme-bot-starter/status.svg)](https://david-dm.org/acmatuc/groupme-bot-starter)
-[![Dependencies Status](https://david-dm.org/acmatuc/groupme-bot-starter/dev-status.svg)](https://david-dm.org/acmatuc/groupme-bot-starter?type=dev)
-
-> Starter code for the GroupMe bot workshop at ACM@UC
-
+Now based on my own server code.
 
 [GNU GPLv3 License](LICENSE.txt)
-
-* Some content based on [groupme/bot-tutorial-nodejs](https://github.com/groupme/bot-tutorial-nodejs) (MIT License)

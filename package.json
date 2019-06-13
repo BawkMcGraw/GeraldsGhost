@@ -14,8 +14,7 @@
   "dependencies": {
     "director": "1.2.8",
     "dotenv": "2.0.0",
-    "pg": "^7.4.3",
-    "psql": "0.0.1",
+    "pg": "^7.11.0",
     "winston": "2.2.0"
   },
   "devDependencies": {

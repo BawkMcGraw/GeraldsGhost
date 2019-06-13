@@ -21,7 +21,7 @@ class Server {
 
     serve() {
         this.server.listen(this.port);
-        console.log('Running on port' + this.port);
+        console.log('Running on port: ' + this.port);
     };
 
     static getResponse() {
@@ -33,7 +33,7 @@ class Server {
 
         this.res.writeHead(200);
         this.res.end();
-        Bot.Functions.load();
+        Bot.Functions.load(reqMessage.group_id);
         function send() {
             console.log("starting send");
             const resMessage = Bot.Bot.checkMessage(reqMessage);
