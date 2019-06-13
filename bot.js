@@ -74,6 +74,7 @@ class Functions {
 
             // SQL RETURN
             if (result.rows[g] = undefined) {
+                console.log('rows undefined');
                 t = 0;
                 timeout = 0;
                 s = 0;
@@ -83,6 +84,7 @@ class Functions {
                 timeout = result.rows[g].timeout;
                 s = result.rows[g].s;
             }
+            console.log(t+' '+timeout+' '+s);
 
             // PLAYER SCORE LOGS
             /**
@@ -97,6 +99,7 @@ class Functions {
     }
     static save() {
         // Connect
+        console.log('g at save '+g);
         const con = new Client({
             connectionString: process.env.DATABASE_URL,
             ssl: true,
@@ -127,6 +130,7 @@ class Functions {
     }
 
     static timeout() {
+        console.log('made it to timeout');
         var time = new Date();
         var minute = time.getMinutes();
         var hour = time.getHours()*100;
