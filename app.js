@@ -33,7 +33,6 @@ class Server {
 
         this.res.writeHead(200);
         this.res.end();
-        console.log('reqGroupId '+reqMessage.group_id);
         Bot.Functions.load(reqMessage.group_id);
         function send() {
             console.log("starting send");
