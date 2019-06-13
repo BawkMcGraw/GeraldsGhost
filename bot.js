@@ -232,7 +232,7 @@ class Bot {
        var loop;
        var mtch = messageText.match(/.{1,1000}/g);
         for (loop = -0; loop <= mtch.length; loop++) {
-            function tick(loop) {
+            var tick = function (loop) {
                 const body = {
                     bot_id: botId,
                     text: mtch[loop]
