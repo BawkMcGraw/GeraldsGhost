@@ -58,13 +58,11 @@ class Functions {
     static load(groupid) {
         console.log('starting load');
         for (var i = 0; i < gTest.length; i++) {
-            console.log('i '+i);
             if (gTest[i].test(groupid)) {
-                console.log(gTest[i]+' was true.');
                 g = i;
             }
         }
-        console.log('g '+g);
+        console.log('g at load '+g);
         const con = new Client({
             connectionString: process.env.DATABASE_URL,
             ssl: true,
@@ -179,6 +177,7 @@ class Bot {
         var mText = message.text;
         var mName = message.name;
         var UID = message.user_id;
+        console.log('g at checkmessage '+g);
 
         if (nameex.test(mName)) {
             return null;
@@ -218,6 +217,7 @@ class Bot {
         Functions.save();
         var botId;
         console.log('botid pre '+botId);
+        console.log('g at botid '+g);
 
         const botid0 = "9e5b4c453857bf5478df24d842";
         const botid1 = "85b8f1df02628b05226c8f7b3e";
