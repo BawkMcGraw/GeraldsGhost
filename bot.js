@@ -95,10 +95,6 @@ class Functions {
         });
         con.connect();
         // Gather save data
-        console.log('g '+g);
-        console.log('s '+s);
-        console.log('t '+t);
-        console.log('timeout '+timeout);
         var sqlm = 'update counters set s = '+s+', t = '+t+', timeout = '+timeout+' where g = '+g+'\;';
 
         // Send server save info
@@ -123,7 +119,6 @@ class Functions {
     }
 
     static timeout() {
-        console.log('reached too many');
         var time = new Date();
         var minute = time.getMinutes();
         var hour = time.getHours()*100;
@@ -131,13 +126,11 @@ class Functions {
         var month = time.getMonth()*1000000;
         var year = (time.getFullYear()-2000)*100000000;
         var ttime = minute + hour + day + month + year;
-        console.log('ttime '+ttime);
-        if (timeout > ttime) {
+        if (ttime > timeout) {
             timeout = 0;
             t = 0;
         }
         if (t < 3) {
-            console.log('set timeout');
             t++;
             timeout = ttime + 5;
             return 0;
