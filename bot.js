@@ -94,7 +94,8 @@ class Functions {
         });
         con.connect();
         // Gather save data
-        var sqlm = 'update counters set s = '+s+', t = '+t+', timeout = '+timeout+', where g = '+g+'\;';
+        console.log('g '+g);
+        var sqlm = 'update counters set s = '+s+', t = '+t+', timeout = '+timeout+' where g = '+g+'\;';
 
         // Send server save info
         con.query(sqlm, function(err, result) {
