@@ -55,7 +55,8 @@ class Functions {
         return 'stooOOOoory? ' + a[array[0]] + b[array[1]] + c[array[2]];
     }
     static load(groupid) {
-        console.log('starting load')
+        console.log('starting load');
+        console.log('groupid '+groupid);
         for (var i = 0; i <= gTest.length; i++) {
             if (gTest[i].test(groupid)) {
                 g = i;
