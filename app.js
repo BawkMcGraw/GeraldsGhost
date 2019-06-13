@@ -41,7 +41,6 @@ class Server {
                 Bot.Bot.sendMessage(resMessage);
             }
         }
-        console.log('reached timeout');
         setTimeout(send, 200);
     };
 };
