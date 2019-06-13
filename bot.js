@@ -12,6 +12,7 @@ const ghostex = /ghost/i;
 const nameex = /Gerald\'s Ghost/;
 const thankex = /thank/i;
 const helpex = /help/i;
+const manyex = /many/i;
 
 // RULES
 const scoreex = /score/i;
@@ -190,6 +191,9 @@ class Bot {
                 if (Functions.timeout() == 0) {
                     if (helpex.test(mText)) {
                         return 'YoooOOOou can just ask for stories. Some of the triggers are a secret. If you\'re talking about the easteregg hunt, I\'ll tell more when I know more!'
+                    }
+                    if (manyex.test(mText)) {
+                        return s+' stoooOOoories';
                     }
                     else {
                         return Functions.Story();
