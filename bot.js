@@ -73,7 +73,7 @@ class Functions {
             if (err) throw err;
 
             // SQL RETURN
-            if (result.rows[g] = undefined) {
+            if (!result.rows[g]) {
                 console.log('rows undefined');
                 t = 0;
                 timeout = 0;
