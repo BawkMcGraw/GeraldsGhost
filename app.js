@@ -35,11 +35,9 @@ class Server {
         this.res.end();
         Bot.Functions.load(reqMessage.group_id);
         function send() {
-            console.log('g at send '+g);
             console.log("starting send");
             const resMessage = Bot.Bot.checkMessage(reqMessage);
             if (resMessage) {
-                console.log('g at send '+g);
                 Bot.Bot.sendMessage(resMessage);
             }
         }

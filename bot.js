@@ -1,6 +1,6 @@
 const https = require('https');
 const { Pool, Client } = require('pg');
-var gTest = [/27754904/,/41279538/];
+var gTest = [/27754904/,/51082095/,/41279538/];
 var g;
 var t,timeout,s;
 
@@ -220,7 +220,8 @@ class Bot {
         console.log('g at botid '+g);
 
         const botid0 = "9e5b4c453857bf5478df24d842";
-        const botid1 = "85b8f1df02628b05226c8f7b3e";
+        const botid1 = "d0ba5c3b44c41ebda08008c411";
+        const botid2 = "85b8f1df02628b05226c8f7b3e";
 
         if (g = 0) {
             botId = botid0;
@@ -229,6 +230,10 @@ class Bot {
         if (g = 1) {
             console.log('set botId 1');
             botId = botid1;
+        }
+        if (g = 2) {
+            console.log('set botId 2');
+            botId = botid2;
         }
         const options = {
             hostname: 'api.groupme.com',
